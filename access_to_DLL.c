@@ -11,7 +11,8 @@
 packet_socket = socket(PF_PACKET, int socket_type, int protocol)
 
 // socket family - send/receive link-layer frames 
-PF_PACKET or AF_PACKET 
+PF_PACKET or AF_PACKET  
+AF_INET  // Ipv4 add fa,ily
 
 
 // socket_types 
@@ -24,9 +25,11 @@ PF_PACKET or AF_PACKET
 // protocol 
 
 htons() or htonl() => used to convert host byte to network byte order 
-
 htons(ETH_P_ALL) to receive packets of all protocols to which Ethernet forwards data
+htons(INADDR_ANY) bind to all available network interfaces (localhost, eth0)
 
 // to reveive packets
 
 int revecfrom(int packet_socket, void*buf, unsigned int len , int flags, struct sockaddr*from, unsigned int *fromlen);
+
+
