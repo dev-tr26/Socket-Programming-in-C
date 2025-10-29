@@ -12,7 +12,7 @@ packet_socket = socket(PF_PACKET, int socket_type, int protocol)
 
 // socket family - send/receive link-layer frames 
 PF_PACKET or AF_PACKET  
-AF_INET  // Ipv4 add fa,ily
+AF_INET  // Ipv4 add family
 
 
 // socket_types 
@@ -32,4 +32,22 @@ htons(INADDR_ANY) bind to all available network interfaces (localhost, eth0)
 
 int revecfrom(int packet_socket, void*buf, unsigned int len , int flags, struct sockaddr*from, unsigned int *fromlen);
 
+/*
+- packet recieved is stored in buf of size len 
+- If from is not NULL , source add is in proper format f rom is always typecast to the generic socket structure struct sockaddr
+-  fromlen : initialized to size of buffer associated with it 
+- modified on return to indicate the actual size of the address stored there
+- When receiving a packet from packet socket the address is passed in a standard sockaddr ll address structure
 
+*/
+struct socckaddr_ll{
+    unsigned short sll_family;               // always AF_PACKET
+    unsigned short sll_protocol;             // protocol
+    int sll_ifindex;                         //Interface number 
+    unsigned short sll_hatype;               // Header type
+    unsigned char sll_pkttype;               //Packet type
+    unsigned char sll_halen;                 // Length of add
+    unsigned char sll_addr[8];               //Physical layer add
+};
+
+// it is device independent add structure 
