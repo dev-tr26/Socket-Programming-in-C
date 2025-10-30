@@ -1,3 +1,8 @@
+// setsockopt() fun to set socket in promiscuous mode params: mr_ifindex, mr_type, mr_adres_len, phy_layer_adress
+// PACKET_MR_PROMISC ==> enables promiscuous mode
+// PACKET_MR_ALLMUILTI ==> aet up socket to receive all muilticast packets arriving at interface 
+
+
 #define _GNU_SOURCE
 #include <stdio.h>
 #include <stdlib.h>

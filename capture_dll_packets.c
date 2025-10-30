@@ -1,3 +1,19 @@
+// socket() protocol filed-> ETH_P_ALL ethernet accepts all unicast and broadcast packets addressed to it 
+// to get all packets that are not even intended to it but reached somehow to interface , the interface need to be set to promiscuius mode 
+// ioctl() req options we get the informations of interface (mac add, broadcast add)
+// but one needs to get packets from specified interface so 
+// bind() ==> to attach packet socket with interface 
+
+
+/*
+struct sockaddr_ll socket_address;
+socket_address.sll_family = PF_PACKET;
+socket_address.sll_protocol = htons(ETH_P_ALL)
+socket_address.sll_ifindex = req.ifr_ifindex;
+b = bind(sockfd, (Struct sockaddr*)&socket_address, sizeof(socket_address))
+*/
+
+
 #include<sys/socket.h>
 #include<netpacket/packet.h>
 #include<net/ethernet.h>
