@@ -66,7 +66,7 @@ int connect(int sockfd, struct sockaddr * serv_addr, socklen_t addrlen);
 
 ---
 
-## **Compile , Launch & Test for Linux-based**
+## **Compile and Test for Linux-based**
 
 **Compile:**
 
